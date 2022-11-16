@@ -1,3 +1,3 @@
-module github.com/oonray/TProxy/tui
+module github.com/oonray/TProxy
 
 go 1.17
