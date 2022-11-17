@@ -1,18 +1,27 @@
 package ui
 
 import (
+	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
-	log "github.com/sirupsen/logrus"
 )
 
 type TUI struct {
-	root *tview.Box
+	app  *tview.Application
+	root *tview.Grid
 }
 
 func (t *TUI) Init() {
-	t.root = tview.NewBox().SetBorder(true).SetTitle("Hello World!")
+	table := tview.NewTable().SetCell(1, 1, tview.NewTableCell("Hello"))
+	t.root = tview.NewGrid().
+		SetRows(1, 0, 1).
+		SetBorders(true).
+		AddItem(table, 0, 0, 3, 3, 0, 0, false)
+
+	t.root.Box.SetBackgroundColor(tcell.Color(tcell.ColorBlack)).
+		SetBorderColor(tcell.ColorWhite)
+	t.app = tview.NewApplication().SetRoot(t.root, true)
 }
 
 func (t *TUI) Start() error {
-	return tview.NewApplication().SetRoot(t.root, true).Run()
+	return t.app.Run()
 }

@@ -1,18 +1,17 @@
 package main
 
 import (
-	"flag"
-	"fmt"
+	"TProxxy/ui"
 )
 
 var (
-//	TUI ui.TUI = ui.TUI{}
+	TUI ui.TUI = ui.TUI{}
 )
 
 func init() {
-	//TUI.Init()
+	TUI.Init()
 }
 
 func main() {
-	//TUI.Sart()
+	TUI.Start()
 }
